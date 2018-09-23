@@ -70,7 +70,11 @@ namespace Clinic
                 dgvBilling.DataSource = dt;
                 conn.Close();
                 groupBox1.Enabled = true;
-                //dgvSchedule.Enabled = false;
+                dgvItem.DataSource = null;
+                dgvLab.DataSource = null;
+                dgvDialyzer.DataSource = null;
+                dgvExpense.DataSource = null;
+                groupBox6.Enabled = false;
             }
         }
 
@@ -115,62 +119,6 @@ namespace Clinic
                 groupBox5.Enabled = true;
                 groupBox6.Enabled = true;
             }
-        }
-
-        private void itemInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 frm = new Form1();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void itemGroupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmItemGroup frm = new frmItemGroup();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPatient frm = new frmPatient();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void schedulingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSchedule frm = new frmSchedule();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void laboratoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLaboratory frm = new frmLaboratory();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void dialyzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmDialyzer frm = new frmDialyzer();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void modeOfPaymentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMode frm = new frmMode();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void billingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBilling frm = new frmBilling();
-            frm.Show();
-            this.Hide();
         }
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)

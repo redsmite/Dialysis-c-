@@ -66,6 +66,7 @@ namespace Clinic
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmLogin.user_id = "";
             frmLogin frm = new frmLogin();
             frm.Show();
             this.Hide();
@@ -112,6 +113,30 @@ namespace Clinic
         {
             this.IsMdiContainer = true;
             frmPatientHistory Form = new frmPatientHistory();
+            Form.MdiParent = this;
+            Form.Show();
+        }
+
+        private void adminAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            frmSetting Form = new frmSetting();
+            Form.MdiParent = this;
+            Form.Show();
+        }
+
+        private void viewScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            frmViewSchedule Form = new frmViewSchedule();
+            Form.MdiParent = this;
+            Form.Show();
+        }
+
+        private void itemGroupNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            frmItemGroupName Form = new frmItemGroupName();
             Form.MdiParent = this;
             Form.Show();
         }

@@ -55,32 +55,6 @@ namespace Clinic
             txtQuantity.Clear();
         }
 
-        private void itemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmItemGroup frm = new frmItemGroup();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPatient frm = new frmPatient();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void schedulingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSchedule frm = new frmSchedule();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void dgvItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
@@ -120,50 +94,6 @@ namespace Clinic
             txtSPrice.Clear();
             txtOPrice.Clear();
             txtQuantity.Clear();
-        }
-
-        private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void itemGroupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void laboratoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLaboratory frm = new frmLaboratory();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void dialyzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmDialyzer frm = new frmDialyzer();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void modeOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMode frm = new frmMode();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void billingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBilling frm = new frmBilling();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void paymentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPayment frm = new frmPayment();
-            frm.Show();
-            this.Hide();
         }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)

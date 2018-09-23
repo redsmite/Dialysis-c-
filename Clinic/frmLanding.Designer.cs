@@ -52,6 +52,7 @@
             this.salesSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemGroupNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,12 +140,14 @@
             this.viewScheduleToolStripMenuItem.Name = "viewScheduleToolStripMenuItem";
             this.viewScheduleToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
             this.viewScheduleToolStripMenuItem.Text = "View Schedule";
+            this.viewScheduleToolStripMenuItem.Click += new System.EventHandler(this.viewScheduleToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
             // 
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemInfoToolStripMenuItem,
             this.itemGroupToolStripMenuItem,
+            this.itemGroupNameToolStripMenuItem,
             this.dialyzerToolStripMenuItem,
             this.laboratoryToolStripMenuItem});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
@@ -161,7 +164,7 @@
             // itemGroupToolStripMenuItem
             // 
             this.itemGroupToolStripMenuItem.Name = "itemGroupToolStripMenuItem";
-            this.itemGroupToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.itemGroupToolStripMenuItem.Size = new System.Drawing.Size(197, 24);
             this.itemGroupToolStripMenuItem.Text = "Item Group";
             this.itemGroupToolStripMenuItem.Click += new System.EventHandler(this.itemGroupToolStripMenuItem_Click);
             // 
@@ -243,8 +246,16 @@
             // adminAccountToolStripMenuItem
             // 
             this.adminAccountToolStripMenuItem.Name = "adminAccountToolStripMenuItem";
-            this.adminAccountToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
-            this.adminAccountToolStripMenuItem.Text = "Account Setting";
+            this.adminAccountToolStripMenuItem.Size = new System.Drawing.Size(223, 24);
+            this.adminAccountToolStripMenuItem.Text = "Manage User Account";
+            this.adminAccountToolStripMenuItem.Click += new System.EventHandler(this.adminAccountToolStripMenuItem_Click);
+            // 
+            // itemGroupNameToolStripMenuItem
+            // 
+            this.itemGroupNameToolStripMenuItem.Name = "itemGroupNameToolStripMenuItem";
+            this.itemGroupNameToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.itemGroupNameToolStripMenuItem.Text = "Manage Group";
+            this.itemGroupNameToolStripMenuItem.Click += new System.EventHandler(this.itemGroupNameToolStripMenuItem_Click);
             // 
             // frmLanding
             // 
@@ -288,5 +299,6 @@
         private System.Windows.Forms.ToolStripMenuItem patientHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewScheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemGroupNameToolStripMenuItem;
     }
 }

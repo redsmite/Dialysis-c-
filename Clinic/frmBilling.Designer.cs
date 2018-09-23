@@ -395,7 +395,7 @@
             // btnNew
             // 
             this.btnNew.Enabled = false;
-            this.btnNew.Location = new System.Drawing.Point(681, 518);
+            this.btnNew.Location = new System.Drawing.Point(678, 540);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(148, 48);
             this.btnNew.TabIndex = 6;
@@ -455,7 +455,7 @@
             // btnSelect
             // 
             this.btnSelect.Enabled = false;
-            this.btnSelect.Location = new System.Drawing.Point(835, 518);
+            this.btnSelect.Location = new System.Drawing.Point(832, 540);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(148, 48);
             this.btnSelect.TabIndex = 7;
@@ -467,7 +467,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 575);
+            this.ClientSize = new System.Drawing.Size(1133, 593);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnNew);

@@ -46,62 +46,6 @@ namespace Clinic
             txtDesc.Clear();
         }
 
-        private void itemInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 frm = new Form1();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void itemGroupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmItemGroup frm = new frmItemGroup();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPatient frm = new frmPatient();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void schedulingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSchedule frm = new frmSchedule();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void laboratoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLaboratory frm = new frmLaboratory();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void dialyzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmDialyzer frm = new frmDialyzer();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void billingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBilling frm = new frmBilling();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void paymentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSchedule frm = new frmSchedule();
-            frm.Show();
-            this.Hide();
-        }
-
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             conn.Open();

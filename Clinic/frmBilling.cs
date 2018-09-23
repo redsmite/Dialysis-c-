@@ -218,67 +218,6 @@ namespace Clinic
             groupBox4.Enabled = false;
         }
 
-        private void itemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPatient frm = new frmPatient();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void itemInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 frm = new Form1();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void schedulingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSchedule frm = new frmSchedule();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void laboratoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLaboratory frm = new frmLaboratory();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void dialyzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLaboratory frm = new frmLaboratory();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void modeOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMode frm = new frmMode();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void paymentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPayment frm = new frmPayment();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void itemGroupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmItemGroup frm = new frmItemGroup();
-            frm.Show();
-            this.Hide();
-        }
-
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
 

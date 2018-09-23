@@ -126,22 +126,6 @@ namespace Clinic
             this.Hide();
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            conn.Open();
-            String group = convertQuotes(txtGroup.Text);
-            String desc = convertQuotes(txtDesc.Text);
-            String sql = "INSERT INTO item_group_names (group_name, description) VALUES ('" + group + "','" + desc + "')";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Add Successful!");
-            dgvItem.Refresh();
-            frmItemGroup_Load(sender, e);
-            txtGroup.Clear();
-            txtDesc.Clear();
-        }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
             conn.Open();
@@ -152,7 +136,6 @@ namespace Clinic
             MessageBox.Show("Add Successful!");
             dgvItemGroup.Refresh();
             button1_Click_1(sender, e);
-            txtGroup.Clear();
         }
         public string convertQuotes(string str)
         {

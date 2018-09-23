@@ -12,6 +12,8 @@ namespace Clinic
 {
     public partial class frmLogin : Form
     {
+        public static String user_id = "";
+        public static String session_name = "";
         MySqlConnection conn = new MySqlConnection("server = localhost; uid = root; pwd=;database= db_clinic");
         public frmLogin()
         {
@@ -39,7 +41,7 @@ namespace Clinic
             String user = convertQuotes(txtUsername.Text);
             String password = convertQuotes(txtPassword.Text);
 
-            String sql = "SELECT username,password FROM user WHERE username ='" + user + "' AND password = md5('" + password + "')";
+            String sql = "SELECT user_id,username,password FROM user WHERE username ='" + user + "' AND password = md5('" + password + "')";
             
             MySqlCommand cmd = new MySqlCommand(sql,conn);
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -47,7 +49,9 @@ namespace Clinic
             {
                 while (dr.Read())
                 {
-                    MessageBox.Show("Welcome " + dr.GetString(0));
+                    MessageBox.Show("Welcome " + dr.GetString(1));
+                    user_id = dr.GetString(0);
+                    session_name = dr.GetString(1);
                 }
                 frmLanding frm = new frmLanding();
                 frm.Show();

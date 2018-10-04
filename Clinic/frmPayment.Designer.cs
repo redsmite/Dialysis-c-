@@ -41,6 +41,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvExpense = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblDue = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -186,6 +188,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.lblDue);
+            this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Controls.Add(this.txtDiscount);
             this.groupBox6.Controls.Add(this.label6);
@@ -203,9 +207,26 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Payment";
             // 
+            // lblDue
+            // 
+            this.lblDue.AutoSize = true;
+            this.lblDue.Location = new System.Drawing.Point(130, 65);
+            this.lblDue.Name = "lblDue";
+            this.lblDue.Size = new System.Drawing.Size(0, 17);
+            this.lblDue.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Amounts Due:";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(101, 167);
+            this.button1.Location = new System.Drawing.Point(101, 212);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 11;
@@ -215,7 +236,7 @@
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Location = new System.Drawing.Point(133, 134);
+            this.txtDiscount.Location = new System.Drawing.Point(133, 179);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(121, 22);
             this.txtDiscount.TabIndex = 10;
@@ -225,7 +246,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 139);
+            this.label6.Location = new System.Drawing.Point(9, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 17);
             this.label6.TabIndex = 9;
@@ -233,7 +254,7 @@
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(133, 104);
+            this.txtAmount.Location = new System.Drawing.Point(133, 149);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(121, 22);
             this.txtAmount.TabIndex = 8;
@@ -242,7 +263,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 109);
+            this.label4.Location = new System.Drawing.Point(9, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 17);
             this.label4.TabIndex = 7;
@@ -252,7 +273,7 @@
             // 
             this.cboMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMethod.FormattingEnabled = true;
-            this.cboMethod.Location = new System.Drawing.Point(133, 74);
+            this.cboMethod.Location = new System.Drawing.Point(133, 119);
             this.cboMethod.Name = "cboMethod";
             this.cboMethod.Size = new System.Drawing.Size(121, 24);
             this.cboMethod.TabIndex = 3;
@@ -260,7 +281,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 77);
+            this.label3.Location = new System.Drawing.Point(9, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 17);
             this.label3.TabIndex = 2;
@@ -269,7 +290,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(130, 38);
+            this.lblTotal.Location = new System.Drawing.Point(130, 35);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(46, 17);
             this.lblTotal.TabIndex = 1;
@@ -278,7 +299,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 38);
+            this.label2.Location = new System.Drawing.Point(9, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 0;
@@ -342,5 +363,7 @@
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblDue;
+        private System.Windows.Forms.Label label5;
     }
 }

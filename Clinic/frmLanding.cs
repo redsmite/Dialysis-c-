@@ -109,14 +109,6 @@ namespace Clinic
             Form.Show();
         }
 
-        private void patientHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.IsMdiContainer = true;
-            frmPatientHistory Form = new frmPatientHistory();
-            Form.MdiParent = this;
-            Form.Show();
-        }
-
         private void adminAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
@@ -140,5 +132,20 @@ namespace Clinic
             Form.MdiParent = this;
             Form.Show();
         }
+
+        private void frmLanding_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dailySalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.IsMdiContainer = true;
+            frmDailySales Form = new frmDailySales();
+            Form.MdiParent = this;
+            Form.Show();
+        }
+
+        
     }
 }

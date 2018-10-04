@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2018 at 04:35 PM
+-- Generation Time: Oct 04, 2018 at 05:13 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -33,16 +33,22 @@ CREATE TABLE IF NOT EXISTS `billing` (
   `datecreated` date NOT NULL,
   `status` int(10) NOT NULL COMMENT '1=paid; 0=unpaid',
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `billing`
 --
 
 INSERT INTO `billing` (`bill_id`, `sched_id`, `total`, `datecreated`, `status`) VALUES
-(1, 1, '4640.00', '2018-09-20', 0),
-(2, 2, '2350.00', '2018-09-21', 0),
-(3, 4, '1675.00', '2018-09-21', 0);
+(1, 1, '4640.00', '2018-09-20', 1),
+(2, 2, '2350.00', '2018-09-21', 1),
+(3, 4, '1675.00', '2018-09-21', 1),
+(4, 9, '3445.00', '2018-10-02', 1),
+(5, 8, '4340.00', '2018-10-04', 1),
+(6, 7, '1055.00', '2018-10-04', 1),
+(7, 6, '3850.00', '2018-10-04', 1),
+(8, 3, '2400.00', '2018-10-04', 1),
+(9, 5, '25.00', '2018-10-04', 1);
 
 -- --------------------------------------------------------
 
@@ -85,18 +91,23 @@ CREATE TABLE IF NOT EXISTS `dialyzer_used` (
   `dialyzer_id` int(11) NOT NULL,
   `bill_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `datecommit` datetime NOT NULL,
+  `datecommit` date NOT NULL,
   PRIMARY KEY (`dialyzer_used_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `dialyzer_used`
 --
 
 INSERT INTO `dialyzer_used` (`dialyzer_used_id`, `dialyzer_id`, `bill_id`, `amount`, `datecommit`) VALUES
-(1, 9, 1, '600.00', '0000-00-00 00:00:00'),
-(2, 5, 2, '1000.00', '0000-00-00 00:00:00'),
-(3, 6, 3, '1000.00', '2018-09-21 21:57:58');
+(1, 9, 1, '600.00', '0000-00-00'),
+(2, 5, 2, '1000.00', '0000-00-00'),
+(3, 6, 3, '1000.00', '2018-09-21'),
+(4, 9, 4, '2000.00', '2018-10-02'),
+(5, 11, 5, '2000.00', '2018-10-04'),
+(6, 10, 6, '900.00', '2018-10-04'),
+(7, 6, 7, '1850.00', '2018-10-04'),
+(8, 4, 8, '900.00', '2018-10-04');
 
 -- --------------------------------------------------------
 
@@ -123,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `item_groups` (
   `group_id` int(10) unsigned NOT NULL,
   `item_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`ig_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=142 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=143 ;
 
 --
 -- Dumping data for table `item_groups`
@@ -269,7 +280,8 @@ INSERT INTO `item_groups` (`ig_id`, `group_id`, `item_id`) VALUES
 (138, 2, 137),
 (139, 2, 138),
 (140, 2, 139),
-(141, 2, 140);
+(141, 2, 140),
+(142, 3, 140);
 
 -- --------------------------------------------------------
 
@@ -282,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `item_group_names` (
   `group_name` varchar(45) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`ig_name_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `item_group_names`
@@ -290,7 +302,8 @@ CREATE TABLE IF NOT EXISTS `item_group_names` (
 
 INSERT INTO `item_group_names` (`ig_name_id`, `group_name`, `description`) VALUES
 (1, 'Meds / Supply', 'Meds / Supplies only'),
-(2, 'Epoetin', 'epoetin only');
+(2, 'Epoetin', 'epoetin only'),
+(3, 'Icecream Cake!', 'Oh so tasty, come and chase me!');
 
 -- --------------------------------------------------------
 
@@ -468,19 +481,25 @@ CREATE TABLE IF NOT EXISTS `item_used` (
   `bill_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `datecommit` datetime NOT NULL,
+  `datecommit` date NOT NULL,
   PRIMARY KEY (`item_used_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `item_used`
 --
 
 INSERT INTO `item_used` (`item_used_id`, `item_id`, `bill_id`, `amount`, `quantity`, `datecommit`) VALUES
-(1, 134, 1, '1850.00', 1, '0000-00-00 00:00:00'),
-(2, 83, 1, '45.00', 2, '0000-00-00 00:00:00'),
-(3, 1, 2, '300.00', 1, '0000-00-00 00:00:00'),
-(4, 69, 3, '25.00', 1, '2018-09-21 21:57:22');
+(1, 134, 1, '1850.00', 1, '0000-00-00'),
+(2, 83, 1, '45.00', 2, '0000-00-00'),
+(3, 1, 2, '300.00', 1, '0000-00-00'),
+(4, 69, 3, '25.00', 1, '2018-09-21'),
+(5, 3, 4, '500.00', 1, '2018-10-02'),
+(6, 140, 5, '2000.00', 1, '2018-10-04'),
+(7, 57, 6, '5.00', 10, '2018-10-04'),
+(8, 140, 7, '2000.00', 1, '2018-10-04'),
+(9, 32, 8, '15.00', 100, '2018-10-04'),
+(10, 4, 9, '5.00', 5, '2018-10-04');
 
 -- --------------------------------------------------------
 
@@ -588,19 +607,22 @@ CREATE TABLE IF NOT EXISTS `laboratory_used` (
   `lab_id` int(11) NOT NULL,
   `bill_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `datecommit` datetime NOT NULL,
+  `datecommit` date NOT NULL,
   PRIMARY KEY (`lab_used_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `laboratory_used`
 --
 
 INSERT INTO `laboratory_used` (`lab_used_id`, `lab_id`, `bill_id`, `amount`, `datecommit`) VALUES
-(1, 56, 1, '1000.00', '0000-00-00 00:00:00'),
-(2, 38, 1, '1000.00', '0000-00-00 00:00:00'),
-(3, 28, 2, '1000.00', '0000-00-00 00:00:00'),
-(4, 44, 3, '650.00', '2018-09-21 21:58:06');
+(1, 56, 1, '1000.00', '0000-00-00'),
+(2, 38, 1, '1000.00', '0000-00-00'),
+(3, 28, 2, '1000.00', '0000-00-00'),
+(4, 44, 3, '650.00', '2018-09-21'),
+(5, 56, 4, '945.00', '2018-10-02'),
+(6, 64, 5, '340.00', '2018-10-04'),
+(7, 47, 6, '105.00', '2018-10-04');
 
 -- --------------------------------------------------------
 
@@ -621,7 +643,7 @@ CREATE TABLE IF NOT EXISTS `mode_of_payment` (
 
 INSERT INTO `mode_of_payment` (`mode_id`, `mode_of_payment`, `description`) VALUES
 (1, 'cash', 'cash'),
-(2, ' check', ' check'),
+(2, 'check', 'check'),
 (3, 'credit card', 'credit card'),
 (4, 'phic', 'phic'),
 (5, 'pcso', 'pcso'),
@@ -632,7 +654,7 @@ INSERT INTO `mode_of_payment` (`mode_id`, `mode_of_payment`, `description`) VALU
 (10, 'valucare', 'valucare'),
 (11, 'flexicare', 'flexicare'),
 (12, 'dswd', 'dswd'),
-(13, 'A/R', 'A/R'),
+(13, 'philhealth', 'philhealth'),
 (14, 'hppi', 'hppi');
 
 -- --------------------------------------------------------
@@ -646,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `other_expenses` (
   `description` varchar(200) NOT NULL,
   `bill_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `datecommit` datetime NOT NULL,
+  `datecommit` date NOT NULL,
   PRIMARY KEY (`expense_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -655,8 +677,8 @@ CREATE TABLE IF NOT EXISTS `other_expenses` (
 --
 
 INSERT INTO `other_expenses` (`expense_id`, `description`, `bill_id`, `amount`, `datecommit`) VALUES
-(1, 'Extra', 1, '100.00', '0000-00-00 00:00:00'),
-(2, 'Travel', 2, '50.00', '0000-00-00 00:00:00');
+(1, 'Extra', 1, '100.00', '0000-00-00'),
+(2, 'Travel', 2, '50.00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -679,14 +701,14 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `dialysis_logsheet` tinyint(1) NOT NULL,
   `storage_code` varchar(100) NOT NULL,
   PRIMARY KEY (`patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `patient`
 --
 
 INSERT INTO `patient` (`patient_id`, `lastname`, `firstname`, `middlename`, `phone`, `contact`, `clinic_abstract`, `hemoglobin_order`, `latest_lab`, `latest_chest_xray`, `hepatitis_profile`, `dialysis_logsheet`, `storage_code`) VALUES
-(1, 'Agustin', 'Herminia', 'B', '9090-0909099', '113-1212', 0, 1, 0, 1, 0, 1, 'ABCD-1125'),
+(1, 'Agustin', 'Herminia', 'B', '9090-0909099', '113-1212', 0, 0, 1, 1, 0, 1, 'ABSdasdsa'),
 (2, 'Alvarez', 'Mary Ann', 'G', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
 (3, 'Banaag', 'Teresita', 'W', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
 (4, 'Ballesteros', 'Gem', 'P', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
@@ -708,7 +730,9 @@ INSERT INTO `patient` (`patient_id`, `lastname`, `firstname`, `middlename`, `pho
 (20, 'Soliman', 'Alicia', 'C', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
 (21, 'Valdez', 'Eric', 'N', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
 (22, 'Redondo', 'Ena', 'M', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124'),
-(23, 'Akenzua', 'Fe', 'C', '9090-0909099', '113-1212', 1, 0, 1, 0, 1, 0, 'ABCD-1124');
+(23, 'Akenzua', 'Fe', 'C', '9090-0909099', '113-1212', 1, 1, 1, 1, 1, 1, 'ABCD-1124'),
+(24, 'Jeffric', 'Pisuena', 'V', '0990909', '090909090909', 0, 0, 0, 0, 0, 0, ''),
+(25, 'last', 'first', 'middle', '09090', '111111', 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -725,7 +749,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `total` decimal(10,2) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `payment`
@@ -734,7 +758,15 @@ CREATE TABLE IF NOT EXISTS `payment` (
 INSERT INTO `payment` (`payment_id`, `bill_id`, `mode_id`, `amount`, `discount`, `total`, `date`) VALUES
 (1, 1, 1, '4640.00', '0.00', '4640.00', '0000-00-00'),
 (2, 2, 9, '2000.00', '0.00', '2000.00', '2018-09-21'),
-(3, 2, 1, '350.00', '0.00', '350.00', '2018-09-21');
+(3, 2, 1, '350.00', '0.00', '350.00', '2018-09-21'),
+(4, 4, 13, '3445.00', '0.00', '3445.00', '2018-10-02'),
+(8, 5, 1, '100.00', '0.00', '100.00', '2018-10-04'),
+(9, 5, 1, '100.00', '0.00', '100.00', '2018-10-04'),
+(10, 5, 1, '4140.00', '0.00', '4140.00', '2018-10-04'),
+(11, 6, 8, '1055.00', '0.00', '1055.00', '2018-10-04'),
+(12, 7, 8, '3850.00', '0.00', '3850.00', '2018-10-04'),
+(13, 8, 1, '100.00', '0.00', '100.00', '2018-10-04'),
+(14, 9, 8, '25.00', '0.00', '25.00', '2018-10-04');
 
 -- --------------------------------------------------------
 
@@ -750,7 +782,7 @@ CREATE TABLE IF NOT EXISTS `scheduling` (
   `time_end` time NOT NULL,
   `session_no` varchar(50) NOT NULL,
   PRIMARY KEY (`schedule_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `scheduling`
@@ -763,7 +795,9 @@ INSERT INTO `scheduling` (`schedule_id`, `patient_id`, `date_schedule`, `time_st
 (4, 15, '2018-09-23', '08:00:00', '10:00:00', '20180920200010'),
 (5, 13, '2018-09-24', '08:00:00', '10:00:00', '20180920200019'),
 (6, 14, '2018-09-25', '08:00:00', '10:00:00', '20180920200025'),
-(7, 11, '2018-09-26', '08:00:00', '10:00:00', '20180920200032');
+(7, 11, '2018-09-26', '08:00:00', '10:00:00', '20180920200032'),
+(8, 1, '2018-09-13', '06:52:23', '10:52:23', '20180928145255'),
+(9, 19, '2018-10-02', '12:00:00', '04:00:00', '20181001133904');
 
 -- --------------------------------------------------------
 

@@ -13,7 +13,7 @@ namespace Clinic
     public partial class frmPatientHistory : Form
     {
         MySqlConnection conn = new MySqlConnection("server = localhost; uid = root; pwd=;database= db_clinic");
-        String patient_id = "";
+        String patient_id = frmPatient.patient_id;
         String schedule_id = "";
         String bill_id = "";
         public frmPatientHistory()
@@ -24,47 +24,28 @@ namespace Clinic
         private void frmPatientHistory_Load(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT patient_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, phone, contact FROM patient";
+            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id WHERE t1.patient_id = '"+patient_id+"'";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgvPatient.DataSource = dt;
+            dgvSchedule.DataSource = dt;
             conn.Close();
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             conn.Open();
-            String sql = "SELECT patient_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, phone, contact FROM patient WHERE lastname LIKE '%" + convertQuotes(txtSearch.Text) + "%'";
-            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvPatient.DataSource = dt;
+            //String sql = "SELECT patient_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, phone, contact FROM patient WHERE lastname LIKE '%" + convertQuotes(txtSearch.Text) + "%'";
+            //MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //dgvPatient.DataSource = dt;
             conn.Close();
         }
         public string convertQuotes(string str)
         {
 
             return str.Replace("'", "''");
-
-        }
-
-        private void dgvPatient_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvPatient.Rows[i];
-                patient_id = row.Cells[0].Value.ToString();
-                conn.Open();
-                String sql = "SELECT schedule_id, date_schedule, time_start, time_end FROM scheduling WHERE patient_id = '"+patient_id+"'";
-                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgvSchedule.DataSource = dt;
-                conn.Close();
-                groupBox4.Enabled = false;
-            }
 
         }
 
@@ -82,7 +63,6 @@ namespace Clinic
                 da.Fill(dt);
                 dgvBilling.DataSource = dt;
                 conn.Close();
-                groupBox4.Enabled = false;
             }
         }
 
@@ -93,7 +73,7 @@ namespace Clinic
             {
                 DataGridViewRow row = dgvBilling.Rows[i];
                 bill_id = row.Cells[0].Value.ToString();
-                groupBox4.Enabled = true;
+                MessageBox.Show("You selected bill id #"+bill_id);
             }
         }
 
@@ -108,7 +88,29 @@ namespace Clinic
             conn.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            String sql = "SELECT name, SUM(amount) AS total_sales, SUM(t1.quantity) AS total_quantity FROM item_used AS t1 LEFT JOIN item_info AS t2 ON t1.item_id = t2.item_id WHERE bill_id = '" + bill_id + "' GROUP BY t1.item_id";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvUsed.DataSource = dt;
+            conn.Close();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            conn.Open();
+            String sql = "SELECT name, SUM(amount) AS total_sales, SUM(t1.quantity) AS total_quantity FROM item_used AS t1 LEFT JOIN item_info AS t2 ON t1.item_id = t2.item_id WHERE bill_id = '" + bill_id + "' GROUP BY t1.item_id";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvUsed.DataSource = dt;
+            conn.Close();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
         {
             conn.Open();
             String sql2 = "SELECT dialyzer_name, SUM(amount) AS total_sales, COUNT(dialyzer_used_id) AS total_quantity FROM dialyzer_used AS t1 LEFT JOIN dialyzers AS t2 ON t1.dialyzer_id = t2.dialyzer_id WHERE bill_id = '" + bill_id + "' GROUP BY t1.dialyzer_id";
@@ -119,7 +121,7 @@ namespace Clinic
             conn.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_2(object sender, EventArgs e)
         {
             conn.Open();
             String sql3 = "SELECT lab_name, SUM(amount) AS total_sales, COUNT(lab_used_id) AS total_quantity FROM laboratory_used AS t1 LEFT JOIN laboratories AS t2 ON t1.lab_id = t2.lab_id WHERE bill_id = '" + bill_id + "' GROUP BY t1.lab_id";
@@ -141,7 +143,7 @@ namespace Clinic
             conn.Close();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click_2(object sender, EventArgs e)
         {
             conn.Open();
             String sql4 = "SELECT mode_of_payment, SUM(amount)AS total_amount, SUM(discount) AS total_discount FROM payment AS t1 LEFT JOIN mode_of_payment AS t2 ON t1.mode_id = t2.mode_id WHERE bill_id = '" + bill_id + "' GROUP BY description";
@@ -151,5 +153,7 @@ namespace Clinic
             dgvUsed.DataSource = dt4;
             conn.Close();
         }
+
+       
     }
 }

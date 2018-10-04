@@ -65,6 +65,8 @@
             // 
             // dgvSchedule
             // 
+            this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSchedule.Enabled = false;
             this.dgvSchedule.Location = new System.Drawing.Point(6, 21);
@@ -77,6 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(858, 418);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);

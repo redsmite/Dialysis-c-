@@ -15,6 +15,8 @@ namespace Clinic
         MySqlConnection conn = new MySqlConnection("server = localhost; uid = root; pwd=;database= db_clinic");
         String sched_id = "";
         String bill_id = "";
+        String total_payment = "";
+        double billing_total = 0;
         public frmPayment()
         {
             InitializeComponent();
@@ -26,6 +28,7 @@ namespace Clinic
             String method = cboMethod.SelectedValue.ToString();
             String amount = txtAmount.Text;
             String discount = txtDiscount.Text;
+            double payment = 0;
             String sql = "INSERT INTO payment (bill_id, mode_id, amount, discount, total, date) VALUES ('" + bill_id + "','" + method + "','" + amount + "', '" + discount + "', '" +amount+ "-" +discount+"',NOW())";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -33,12 +36,39 @@ namespace Clinic
             MessageBox.Show("Add Successful!");
             txtAmount.Clear();
             txtDiscount.Clear();
+            lblTotal.Text = "None";
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox4.Enabled = false;
+            groupBox5.Enabled = false;
+            groupBox6.Enabled = false;
+
+            String sql5 = "SELECT SUM(total) AS payment FROM payment WHERE bill_id = '" + bill_id + "' GROUP BY bill_id";
+            conn.Open();
+            MySqlCommand cmd2 = new MySqlCommand(sql5, conn);
+            MySqlDataReader dr = cmd2.ExecuteReader();
+            while (dr.Read())
+            {
+                total_payment = dr.GetString("payment");
+                payment = Convert.ToDouble(total_payment);
+                
+            }
+            double due = billing_total - payment;
+            conn.Close();
+            conn.Open();
+            if (due <= 0)
+            {
+                String sql3 = "UPDATE billing SET status = 1 WHERE bill_id = '" + bill_id + "'";
+                MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+                cmd3.ExecuteNonQuery();
+            }
+            conn.Close();
         }
 
         private void frmPayment_Load(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id";
+            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id LEFT JOIN billing AS t3 ON t1.schedule_id = t3.sched_id WHERE t3.status = 0";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -86,6 +116,7 @@ namespace Clinic
                 DataGridViewRow row = dgvBilling.Rows[i];
                 bill_id = row.Cells[0].Value.ToString();
                 lblTotal.Text = row.Cells[1].Value.ToString();
+                lblDue.Text = row.Cells[1].Value.ToString();
                 conn.Open();
 
                 String sql = "SELECT name,amount FROM item_used AS t1 LEFT JOIN item_info AS t2 ON t1.item_id = t2.item_id WHERE bill_id = " + bill_id + "";
@@ -118,6 +149,30 @@ namespace Clinic
                 groupBox4.Enabled = true;
                 groupBox5.Enabled = true;
                 groupBox6.Enabled = true;
+
+                String sql5 = "SELECT SUM(total) AS payment FROM payment WHERE bill_id = '"+bill_id+"' GROUP BY bill_id";
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql5, conn);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    double payment2 = 0;
+                    total_payment = dr.GetString("payment");
+                    double total = Convert.ToDouble(lblTotal.Text);
+                    billing_total = total;
+                    if (dr.HasRows)
+                    {
+                        payment2 = Convert.ToDouble(total_payment);
+                    }
+                    else {
+                        payment2 = 0;
+                    }
+                    
+                    double due = total - payment2;
+                    String amounts_due = Convert.ToString(due);
+                    lblDue.Text = amounts_due;
+                }
+                conn.Close();
             }
         }
 

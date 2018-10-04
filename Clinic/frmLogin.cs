@@ -37,6 +37,7 @@ namespace Clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
+          
             conn.Open();
             String user = convertQuotes(txtUsername.Text);
             String password = convertQuotes(txtPassword.Text);
@@ -69,6 +70,13 @@ namespace Clinic
         {
 
             return str.Replace("'", "''");
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtUsername.Text = "";
+            txtPassword.Text = "";
 
         }
     }

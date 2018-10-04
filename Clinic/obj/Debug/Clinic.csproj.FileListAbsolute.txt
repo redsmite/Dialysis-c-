@@ -21,3 +21,5 @@ C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clin
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmSetting.resources
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmViewSchedule.resources
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmItemGroupName.resources
+C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmDocu.resources
+C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmDailySales.resources

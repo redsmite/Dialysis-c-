@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvSchedule = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.timeEnd = new System.Windows.Forms.DateTimePicker();
@@ -37,16 +36,19 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.timeStart = new System.Windows.Forms.DateTimePicker();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboPatient = new System.Windows.Forms.ComboBox();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dgvSchedule);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.timeEnd);
@@ -54,24 +56,16 @@
             this.groupBox1.Controls.Add(this.dtpDate);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.timeStart);
-            this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cboPatient);
+            this.groupBox1.Controls.Add(this.shapeContainer1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(835, 442);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Schedule";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(398, 398);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 31);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dgvSchedule
             // 
@@ -94,6 +88,7 @@
             // 
             // timeEnd
             // 
+            this.timeEnd.Enabled = false;
             this.timeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timeEnd.Location = new System.Drawing.Point(568, 360);
             this.timeEnd.Name = "timeEnd";
@@ -135,16 +130,7 @@
             this.timeStart.ShowUpDown = true;
             this.timeStart.Size = new System.Drawing.Size(227, 22);
             this.timeStart.TabIndex = 3;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(317, 398);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 31);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.timeStart.ValueChanged += new System.EventHandler(this.timeStart_ValueChanged);
             // 
             // label1
             // 
@@ -163,6 +149,40 @@
             this.cboPatient.Name = "cboPatient";
             this.cboPatient.Size = new System.Drawing.Size(227, 24);
             this.cboPatient.TabIndex = 0;
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(3, 18);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(829, 421);
+            this.shapeContainer1.TabIndex = 14;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape1.BorderColor = System.Drawing.Color.DarkTurquoise;
+            this.rectangleShape1.Location = new System.Drawing.Point(364, 368);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(115, 49);
+            this.rectangleShape1.Click += new System.EventHandler(this.rectangleShape1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(402, 402);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "ADD";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // frmSchedule
             // 
@@ -184,8 +204,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboPatient;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker timeStart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
@@ -193,6 +211,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DataGridView dgvSchedule;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cboPatient;
+        private System.Windows.Forms.Label label2;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
     }
 }

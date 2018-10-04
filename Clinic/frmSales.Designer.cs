@@ -47,7 +47,7 @@
             this.groupBox1.Size = new System.Drawing.Size(481, 437);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Item Sales Summary";
+            this.groupBox1.Text = "Sales Summary";
             // 
             // dgvSales
             // 

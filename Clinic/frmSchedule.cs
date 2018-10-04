@@ -40,7 +40,34 @@ namespace Clinic
             conn.Close();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+       
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void cboSession_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timeStart_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime endtime = timeStart.Value.AddHours(4);
+            timeEnd.Value = endtime;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rectangleShape1_Click(object sender, EventArgs e)
         {
             conn.Open();
             String patient = cboPatient.SelectedValue.ToString();
@@ -56,16 +83,6 @@ namespace Clinic
             MessageBox.Show("Add Successful!");
             dgvSchedule.Refresh();
             frmSchedule_Load(sender, e);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void cboSession_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
     }

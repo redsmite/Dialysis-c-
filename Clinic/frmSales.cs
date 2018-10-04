@@ -26,7 +26,7 @@ namespace Clinic
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT name, SUM(amount) AS total_sales, SUM(t1.quantity) AS total_quantity FROM item_used AS t1 LEFT JOIN item_info AS t2 ON t1.item_id = t2.item_id GROUP BY t1.item_id";
+            String sql = "SELECT name, sum(amount * t1.quantity) AS total_sales, SUM(t1.quantity) AS total_quantity FROM item_used AS t1 LEFT JOIN item_info AS t2 ON t1.item_id = t2.item_id GROUP BY t1.item_id";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);

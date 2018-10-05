@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.dgvSchedule = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.timeEnd = new System.Windows.Forms.DateTimePicker();
@@ -37,10 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.timeStart = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboPatient = new System.Windows.Forms.ComboBox();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtPatient = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +47,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.txtPatient);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgvSchedule);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.timeEnd);
@@ -57,8 +58,6 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.timeStart);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cboPatient);
-            this.groupBox1.Controls.Add(this.shapeContainer1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(835, 442);
@@ -67,12 +66,26 @@
             this.groupBox1.Text = "Schedule";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Cyan;
+            this.button1.Location = new System.Drawing.Point(353, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 44);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // dgvSchedule
             // 
+            this.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSchedule.Location = new System.Drawing.Point(6, 21);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.RowTemplate.Height = 24;
+            this.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSchedule.Size = new System.Drawing.Size(823, 285);
             this.dgvSchedule.TabIndex = 13;
             this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -141,48 +154,22 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Patient:";
             // 
-            // cboPatient
+            // txtPatient
             // 
-            this.cboPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPatient.FormattingEnabled = true;
-            this.cboPatient.Location = new System.Drawing.Point(125, 316);
-            this.cboPatient.Name = "cboPatient";
-            this.cboPatient.Size = new System.Drawing.Size(227, 24);
-            this.cboPatient.TabIndex = 0;
+            this.txtPatient.Location = new System.Drawing.Point(125, 316);
+            this.txtPatient.Name = "txtPatient";
+            this.txtPatient.Size = new System.Drawing.Size(227, 22);
+            this.txtPatient.TabIndex = 15;
             // 
-            // shapeContainer1
+            // button2
             // 
-            this.shapeContainer1.Location = new System.Drawing.Point(3, 18);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(829, 421);
-            this.shapeContainer1.TabIndex = 14;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.DarkTurquoise;
-            this.rectangleShape1.Location = new System.Drawing.Point(364, 368);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(115, 49);
-            this.rectangleShape1.Click += new System.EventHandler(this.rectangleShape1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(402, 402);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "ADD";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.button2.Location = new System.Drawing.Point(358, 314);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(62, 26);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Search";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmSchedule
             // 
@@ -211,9 +198,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DataGridView dgvSchedule;
-        private System.Windows.Forms.ComboBox cboPatient;
-        private System.Windows.Forms.Label label2;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtPatient;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -167,10 +167,16 @@ namespace Clinic
             storage = txtStorage.Text;
             conn.Open();
             String sql = "UPDATE patient SET clinic_abstract = "+clinic+", hemoglobin_order = "+hemo+", latest_lab = "+lab+", latest_chest_xray = "+xray+", hepatitis_profile = "+hepa+", dialysis_logsheet = "+dia+", storage_code = '"+storage+"' WHERE patient_id = '"+patient_id+"'";
-            MessageBox.Show(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
+            if(clinic == true && hemo == true && lab == true && xray == true && hepa == true && dia == true){
+            conn.Open();
+            String sql2 = "UPDATE patient SET is_complete = 1 WHERE patient_id = '"+patient_id+"'";
+            MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
+            }
             MessageBox.Show("Update Successful!");
             this.Hide();
         }

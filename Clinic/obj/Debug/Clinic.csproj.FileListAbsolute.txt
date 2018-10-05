@@ -23,3 +23,5 @@ C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clin
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmItemGroupName.resources
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmDocu.resources
 C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmDailySales.resources
+C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmPatientSearch.resources
+C:\Users\jojo\Documents\Visual Studio 2008\Projects\Clinic\Clinic\obj\Debug\Clinic.frmSummary.resources

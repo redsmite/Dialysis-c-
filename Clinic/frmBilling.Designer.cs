@@ -31,6 +31,10 @@
             this.dgvSchedule = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtSearchItem = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblGroup = new System.Windows.Forms.Label();
@@ -67,6 +71,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.txtSearchSched = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSummary = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
@@ -78,13 +85,16 @@
             // 
             // dgvSchedule
             // 
+            this.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedule.Location = new System.Drawing.Point(11, 32);
+            this.dgvSchedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvSchedule.Location = new System.Drawing.Point(17, 61);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.RowTemplate.Height = 24;
+            this.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSchedule.Size = new System.Drawing.Size(1109, 150);
             this.dgvSchedule.TabIndex = 0;
-            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
             // 
             // label1
             // 
@@ -97,6 +107,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtSubtotal);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.txtSearchItem);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.lblGroup);
@@ -109,17 +123,51 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dgvItem);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(15, 305);
+            this.groupBox1.Location = new System.Drawing.Point(11, 336);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(563, 261);
+            this.groupBox1.Size = new System.Drawing.Size(563, 276);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Used";
             // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.Enabled = false;
+            this.txtSubtotal.Location = new System.Drawing.Point(417, 196);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.Size = new System.Drawing.Size(141, 22);
+            this.txtSubtotal.TabIndex = 14;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(310, 199);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(64, 17);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Subtotal:";
+            // 
+            // txtSearchItem
+            // 
+            this.txtSearchItem.Location = new System.Drawing.Point(416, 53);
+            this.txtSearchItem.Name = "txtSearchItem";
+            this.txtSearchItem.Size = new System.Drawing.Size(141, 22);
+            this.txtSearchItem.TabIndex = 12;
+            this.txtSearchItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchItem_KeyUp);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(310, 56);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 17);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Search Item:";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(273, 109);
+            this.label13.Location = new System.Drawing.Point(309, 135);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 17);
             this.label13.TabIndex = 10;
@@ -127,11 +175,12 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(380, 106);
+            this.txtQuantity.Location = new System.Drawing.Point(416, 132);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(177, 22);
+            this.txtQuantity.Size = new System.Drawing.Size(141, 22);
             this.txtQuantity.TabIndex = 9;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
+            this.txtQuantity.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyUp);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // lblGroup
@@ -145,7 +194,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(380, 174);
+            this.button2.Location = new System.Drawing.Point(416, 225);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 45);
             this.button2.TabIndex = 7;
@@ -156,7 +205,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(273, 144);
+            this.label6.Location = new System.Drawing.Point(309, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 17);
             this.label6.TabIndex = 6;
@@ -164,16 +213,17 @@
             // 
             // txtItemAmt
             // 
-            this.txtItemAmt.Location = new System.Drawing.Point(380, 141);
+            this.txtItemAmt.Enabled = false;
+            this.txtItemAmt.Location = new System.Drawing.Point(416, 167);
             this.txtItemAmt.Name = "txtItemAmt";
-            this.txtItemAmt.Size = new System.Drawing.Size(177, 22);
+            this.txtItemAmt.Size = new System.Drawing.Size(141, 22);
             this.txtItemAmt.TabIndex = 5;
             this.txtItemAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemAmt_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(273, 70);
+            this.label5.Location = new System.Drawing.Point(309, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 17);
             this.label5.TabIndex = 4;
@@ -182,23 +232,23 @@
             // txtItem
             // 
             this.txtItem.Enabled = false;
-            this.txtItem.Location = new System.Drawing.Point(380, 67);
+            this.txtItem.Location = new System.Drawing.Point(416, 93);
             this.txtItem.Name = "txtItem";
-            this.txtItem.Size = new System.Drawing.Size(177, 22);
+            this.txtItem.Size = new System.Drawing.Size(141, 22);
             this.txtItem.TabIndex = 3;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(380, 21);
+            this.txtSearch.Location = new System.Drawing.Point(417, 26);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(177, 22);
+            this.txtSearch.Size = new System.Drawing.Size(141, 22);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(273, 21);
+            this.label4.Location = new System.Drawing.Point(310, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 17);
             this.label4.TabIndex = 1;
@@ -206,13 +256,14 @@
             // 
             // dgvItem
             // 
+            this.dgvItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.Location = new System.Drawing.Point(27, 51);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowTemplate.Height = 24;
-            this.dgvItem.Size = new System.Drawing.Size(240, 204);
+            this.dgvItem.Size = new System.Drawing.Size(277, 204);
             this.dgvItem.TabIndex = 0;
-            this.dgvItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellContentClick);
+            this.dgvItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellClick);
             // 
             // groupBox2
             // 
@@ -222,7 +273,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.cboDialyzer);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(584, 199);
+            this.groupBox2.Location = new System.Drawing.Point(580, 230);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(536, 100);
             this.groupBox2.TabIndex = 3;
@@ -282,7 +333,7 @@
             this.groupBox3.Controls.Add(this.cboLab);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(584, 305);
+            this.groupBox3.Location = new System.Drawing.Point(580, 336);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(536, 100);
             this.groupBox3.TabIndex = 4;
@@ -342,7 +393,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txtOther);
             this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(585, 434);
+            this.groupBox4.Location = new System.Drawing.Point(581, 465);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(536, 100);
             this.groupBox4.TabIndex = 5;
@@ -395,7 +446,7 @@
             // btnNew
             // 
             this.btnNew.Enabled = false;
-            this.btnNew.Location = new System.Drawing.Point(678, 540);
+            this.btnNew.Location = new System.Drawing.Point(674, 571);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(148, 48);
             this.btnNew.TabIndex = 6;
@@ -409,7 +460,7 @@
             this.groupBox5.Controls.Add(this.lblSchedule);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(21, 199);
+            this.groupBox5.Location = new System.Drawing.Point(17, 230);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(557, 100);
             this.groupBox5.TabIndex = 4;
@@ -455,7 +506,7 @@
             // btnSelect
             // 
             this.btnSelect.Enabled = false;
-            this.btnSelect.Location = new System.Drawing.Point(832, 540);
+            this.btnSelect.Location = new System.Drawing.Point(828, 571);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(148, 48);
             this.btnSelect.TabIndex = 7;
@@ -463,11 +514,42 @@
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // txtSearchSched
+            // 
+            this.txtSearchSched.Location = new System.Drawing.Point(157, 29);
+            this.txtSearchSched.Name = "txtSearchSched";
+            this.txtSearchSched.Size = new System.Drawing.Size(275, 22);
+            this.txtSearchSched.TabIndex = 8;
+            this.txtSearchSched.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 32);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(142, 17);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Search by Lastname:";
+            // 
+            // btnSummary
+            // 
+            this.btnSummary.Enabled = false;
+            this.btnSummary.Location = new System.Drawing.Point(844, 9);
+            this.btnSummary.Name = "btnSummary";
+            this.btnSummary.Size = new System.Drawing.Size(281, 46);
+            this.btnSummary.TabIndex = 10;
+            this.btnSummary.Text = "Summary";
+            this.btnSummary.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // frmBilling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 593);
+            this.ClientSize = new System.Drawing.Size(1137, 624);
+            this.Controls.Add(this.btnSummary);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtSearchSched);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnNew);
@@ -538,5 +620,12 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.TextBox txtSearchItem;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtSearchSched;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtSubtotal;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnSummary;
     }
 }

@@ -22,7 +22,7 @@ namespace Clinic
         private void frmPatient_Load(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT patient_id,lastname,firstname,middlename,phone,contact FROM patient";
+            String sql = "SELECT patient_id,lastname,firstname,middlename,phone,contact,is_complete FROM patient";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -31,24 +31,14 @@ namespace Clinic
         }
         private void dgvPatient_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvPatient.Rows[i];
-                patient_id = row.Cells[0].Value.ToString();
-                txtLast.Text = row.Cells[1].Value.ToString();
-                txtFirst.Text = row.Cells[2].Value.ToString();
-                txtMiddle.Text = row.Cells[3].Value.ToString();
-                txtPhone.Text = row.Cells[4].Value.ToString();
-                txtContact.Text = row.Cells[5].Value.ToString();
-            }
+            
         }
 
        
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             conn.Open();
-            String sql = "SELECT patient_id,lastname,firstname,middlename,phone,contact FROM patient WHERE lastname LIKE '%"+convertQuotes(txtSearch.Text)+"%'";
+            String sql = "SELECT patient_id,lastname,firstname,middlename,phone,contact,is_complete FROM patient WHERE lastname LIKE '%"+convertQuotes(txtSearch.Text)+"%'";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -75,7 +65,7 @@ namespace Clinic
             String contact = convertQuotes(txtContact.Text);
            
 
-            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "")
+            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "" || txtContact.Text == "" || txtPhone.Text == "")
             {
                 MessageBox.Show("Please fill up all forms first", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -100,36 +90,6 @@ namespace Clinic
 
         private void rectangleShape1_Click(object sender, EventArgs e)
         {
-            conn.Close();
-            conn.Open();
-            String last = convertQuotes(txtLast.Text);
-            String first = convertQuotes(txtFirst.Text);
-            String middle = convertQuotes(txtMiddle.Text);
-            String phone = convertQuotes(txtPhone.Text);
-            String contact = convertQuotes(txtContact.Text);
-            
-
-            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "")
-            {
-                MessageBox.Show("Please fill up all forms first", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
-            else
-            {
-                String sql = "INSERT INTO patient (lastname,firstname,middlename,phone,contact) VALUES ('" + last + "','" + first + "','" + middle + "','" + phone + "','" + contact + "')";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Add Successful!");
-                dgvPatient.Refresh();
-                frmPatient_Load(sender, e);
-                txtLast.Clear();
-                txtFirst.Clear();
-                txtMiddle.Clear();
-                txtPhone.Clear();
-                txtContact.Clear();
-            }
-        
         }
 
         private void rectangleShape2_Click(object sender, EventArgs e)
@@ -174,47 +134,6 @@ namespace Clinic
             }
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
-            conn.Close();
-            conn.Open();
-            String last = convertQuotes(txtLast.Text);
-            String first = convertQuotes(txtFirst.Text);
-            String middle = convertQuotes(txtMiddle.Text);
-            String phone = convertQuotes(txtPhone.Text);
-            String contact = convertQuotes(txtContact.Text);
-          
-            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "")
-            {
-                MessageBox.Show("Please fill up all forms first", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
-            else
-            {
-                String sql = "UPDATE patient SET lastname='" + last + "', firstname='" + first + "', middlename='" + middle + "', phone='" + phone + "', contact='" + contact +"' WHERE patient_id = " + patient_id + "";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Update Successful!");
-                dgvPatient.Refresh();
-                frmPatient_Load(sender, e);
-                txtLast.Clear();
-                txtFirst.Clear();
-                txtMiddle.Clear();
-                txtPhone.Clear();
-                txtContact.Clear();
-            }
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-            txtLast.Clear();
-            txtFirst.Clear();
-            txtMiddle.Clear();
-            txtContact.Clear();
-            txtPhone.Clear();
-        }
-
         private void txtFirst_TextChanged(object sender, EventArgs e)
         {
 
@@ -252,6 +171,95 @@ namespace Clinic
                 Form.Show();
             }
             
+        }
+
+        private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvPatient.Rows[i];
+                patient_id = row.Cells[0].Value.ToString();
+                txtLast.Text = row.Cells[1].Value.ToString();
+                txtFirst.Text = row.Cells[2].Value.ToString();
+                txtMiddle.Text = row.Cells[3].Value.ToString();
+                txtPhone.Text = row.Cells[4].Value.ToString();
+                txtContact.Text = row.Cells[5].Value.ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            String last = convertQuotes(txtLast.Text);
+            String first = convertQuotes(txtFirst.Text);
+            String middle = convertQuotes(txtMiddle.Text);
+            String phone = convertQuotes(txtPhone.Text);
+            String contact = convertQuotes(txtContact.Text);
+
+
+            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "")
+            {
+                MessageBox.Show("Please fill up all forms first", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else
+            {
+                String sql = "INSERT INTO patient (lastname,firstname,middlename,phone,contact) VALUES ('" + last + "','" + first + "','" + middle + "','" + phone + "','" + contact + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Add Successful!");
+                dgvPatient.Refresh();
+                frmPatient_Load(sender, e);
+                txtLast.Clear();
+                txtFirst.Clear();
+                txtMiddle.Clear();
+                txtPhone.Clear();
+                txtContact.Clear();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            String last = convertQuotes(txtLast.Text);
+            String first = convertQuotes(txtFirst.Text);
+            String middle = convertQuotes(txtMiddle.Text);
+            String phone = convertQuotes(txtPhone.Text);
+            String contact = convertQuotes(txtContact.Text);
+
+            if (txtLast.Text == "" || txtFirst.Text == "" || txtMiddle.Text == "" || txtPhone.Text == "" || txtContact.Text == "")
+            {
+                MessageBox.Show("Please fill up all forms first", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else
+            {
+                String sql = "UPDATE patient SET lastname='" + last + "', firstname='" + first + "', middlename='" + middle + "', phone='" + phone + "', contact='" + contact + "' WHERE patient_id = " + patient_id + "";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Update Successful!");
+                dgvPatient.Refresh();
+                frmPatient_Load(sender, e);
+                txtLast.Clear();
+                txtFirst.Clear();
+                txtMiddle.Clear();
+                txtPhone.Clear();
+                txtContact.Clear();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            txtLast.Clear();
+            txtFirst.Clear();
+            txtMiddle.Clear();
+            txtContact.Clear();
+            txtPhone.Clear();
         }
 
        

@@ -42,13 +42,17 @@
             // 
             // dgvDialyzer
             // 
+            this.dgvDialyzer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDialyzer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDialyzer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDialyzer.Location = new System.Drawing.Point(12, 33);
             this.dgvDialyzer.Name = "dgvDialyzer";
             this.dgvDialyzer.RowTemplate.Height = 24;
+            this.dgvDialyzer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDialyzer.Size = new System.Drawing.Size(513, 263);
             this.dgvDialyzer.TabIndex = 0;
-            this.dgvDialyzer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDialyzer_CellContentClick);
+            this.dgvDialyzer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDialyzer_CellClick);
+            //this.dgvDialyzer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDialyzer_CellContentClick);
             // 
             // txtName
             // 

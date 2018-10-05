@@ -51,19 +51,7 @@ namespace Clinic
 
         private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvSchedule.Rows[i];
-                schedule_id = row.Cells[0].Value.ToString();
-                conn.Open();
-                String sql = "SELECT bill_id FROM billing WHERE sched_id = '" + schedule_id + "'";
-                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgvBilling.DataSource = dt;
-                conn.Close();
-            }
+            
         }
 
         private void dgvBilling_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -152,6 +140,23 @@ namespace Clinic
             da4.Fill(dt4);
             dgvUsed.DataSource = dt4;
             conn.Close();
+        }
+
+        private void dgvSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvSchedule.Rows[i];
+                schedule_id = row.Cells[0].Value.ToString();
+                conn.Open();
+                String sql = "SELECT bill_id FROM billing WHERE sched_id = '" + schedule_id + "'";
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvBilling.DataSource = dt;
+                conn.Close();
+            }
         }
 
        

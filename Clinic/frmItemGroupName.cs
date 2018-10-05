@@ -21,9 +21,11 @@ namespace Clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String group = convertQuotes(txtGroup.Text);
             String desc = convertQuotes(txtDesc.Text);
+            if (group != "" && desc != "")
+            {
+            conn.Open();
             String sql = "INSERT INTO item_group_names (group_name, description) VALUES ('" + group + "','" + desc + "')";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -33,6 +35,9 @@ namespace Clinic
             frmItemGroupName_Load(sender, e);
             txtGroup.Clear();
             txtDesc.Clear();
+            }else{
+                MessageBox.Show("Please enter name and description!");
+            }
         }
         public string convertQuotes(string str)
         {
@@ -57,6 +62,7 @@ namespace Clinic
             conn.Open();
             String group = convertQuotes(txtGroup.Text);
             String desc = convertQuotes(txtDesc.Text);
+            if(group != "" && desc != ""){
             String sql = "UPDATE item_group_names SET group_name = '"+group+"', description = '"+desc+"' WHERE ig_name_id = '"+group_id+"'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -66,9 +72,17 @@ namespace Clinic
             frmItemGroupName_Load(sender, e);
             txtGroup.Clear();
             txtDesc.Clear();
+            }else{
+                MessageBox.Show("Please enter name and description!");
+            }
         }
 
         private void dgvGroup_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvGroup_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
             if (e.RowIndex > -1)

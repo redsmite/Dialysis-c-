@@ -42,12 +42,16 @@
             // 
             // dgvLab
             // 
+            this.dgvLab.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvLab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLab.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLab.Location = new System.Drawing.Point(11, 39);
             this.dgvLab.Name = "dgvLab";
             this.dgvLab.RowTemplate.Height = 24;
+            this.dgvLab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLab.Size = new System.Drawing.Size(513, 263);
             this.dgvLab.TabIndex = 0;
+            this.dgvLab.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLab_CellClick);
             this.dgvLab.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLab_CellContentClick);
             // 
             // txtName

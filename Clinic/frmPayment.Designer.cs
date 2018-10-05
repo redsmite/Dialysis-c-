@@ -44,14 +44,16 @@
             this.lblDue = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboMethod = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).BeginInit();
@@ -68,18 +70,21 @@
             // 
             // dgvSchedule
             // 
+            this.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedule.Location = new System.Drawing.Point(11, 32);
+            this.dgvSchedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvSchedule.Location = new System.Drawing.Point(12, 70);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.RowTemplate.Height = 24;
-            this.dgvSchedule.Size = new System.Drawing.Size(652, 188);
+            this.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSchedule.Size = new System.Drawing.Size(699, 188);
             this.dgvSchedule.TabIndex = 0;
-            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(13, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 17);
             this.label1.TabIndex = 1;
@@ -89,7 +94,7 @@
             // 
             this.groupBox1.Controls.Add(this.dgvBilling);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(676, 9);
+            this.groupBox1.Location = new System.Drawing.Point(717, 47);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(156, 212);
             this.groupBox1.TabIndex = 2;
@@ -104,13 +109,13 @@
             this.dgvBilling.RowTemplate.Height = 24;
             this.dgvBilling.Size = new System.Drawing.Size(144, 185);
             this.dgvBilling.TabIndex = 0;
-            this.dgvBilling.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellContentClick);
+            this.dgvBilling.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBilling_CellClick);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvItem);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(17, 226);
+            this.groupBox2.Location = new System.Drawing.Point(15, 264);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(267, 212);
             this.groupBox2.TabIndex = 3;
@@ -130,7 +135,7 @@
             // 
             this.groupBox3.Controls.Add(this.dgvLab);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(290, 226);
+            this.groupBox3.Location = new System.Drawing.Point(288, 264);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(267, 212);
             this.groupBox3.TabIndex = 4;
@@ -150,7 +155,7 @@
             // 
             this.groupBox4.Controls.Add(this.dgvDialyzer);
             this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(17, 444);
+            this.groupBox4.Location = new System.Drawing.Point(15, 482);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(267, 212);
             this.groupBox4.TabIndex = 4;
@@ -170,7 +175,7 @@
             // 
             this.groupBox5.Controls.Add(this.dgvExpense);
             this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(290, 444);
+            this.groupBox5.Location = new System.Drawing.Point(288, 482);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(267, 212);
             this.groupBox5.TabIndex = 5;
@@ -200,9 +205,9 @@
             this.groupBox6.Controls.Add(this.lblTotal);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Enabled = false;
-            this.groupBox6.Location = new System.Drawing.Point(563, 227);
+            this.groupBox6.Location = new System.Drawing.Point(561, 265);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(269, 429);
+            this.groupBox6.Size = new System.Drawing.Size(312, 429);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Payment";
@@ -220,9 +225,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 65);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Amounts Due:";
+            this.label5.Text = "Balance:";
             // 
             // button1
             // 
@@ -230,33 +235,15 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 11;
-            this.button1.Text = "Add";
+            this.button1.Text = "Pay";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(133, 179);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(121, 22);
-            this.txtDiscount.TabIndex = 10;
-            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
-            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 184);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Discount:";
             // 
             // txtAmount
             // 
             this.txtAmount.Location = new System.Drawing.Point(133, 149);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(121, 22);
+            this.txtAmount.Size = new System.Drawing.Size(173, 22);
             this.txtAmount.TabIndex = 8;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
@@ -275,7 +262,7 @@
             this.cboMethod.FormattingEnabled = true;
             this.cboMethod.Location = new System.Drawing.Point(133, 119);
             this.cboMethod.Name = "cboMethod";
-            this.cboMethod.Size = new System.Drawing.Size(121, 24);
+            this.cboMethod.Size = new System.Drawing.Size(173, 24);
             this.cboMethod.TabIndex = 3;
             // 
             // label3
@@ -305,11 +292,48 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Total:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(142, 17);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Search by Lastname:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(169, 13);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(232, 22);
+            this.txtSearch.TabIndex = 8;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Discount:";
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(133, 179);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(173, 22);
+            this.txtDiscount.TabIndex = 10;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
+            // 
             // frmPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 668);
+            this.ClientSize = new System.Drawing.Size(885, 701);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -358,12 +382,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDiscount;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDue;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label label6;
     }
 }

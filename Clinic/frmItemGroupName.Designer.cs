@@ -42,12 +42,16 @@
             // 
             // dgvGroup
             // 
+            this.dgvGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGroup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvGroup.Location = new System.Drawing.Point(12, 12);
             this.dgvGroup.Name = "dgvGroup";
             this.dgvGroup.RowTemplate.Height = 24;
+            this.dgvGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGroup.Size = new System.Drawing.Size(437, 299);
             this.dgvGroup.TabIndex = 0;
+            this.dgvGroup.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroup_CellClick);
             this.dgvGroup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroup_CellContentClick);
             // 
             // groupBox1

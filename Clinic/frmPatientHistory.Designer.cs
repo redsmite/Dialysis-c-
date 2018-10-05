@@ -38,14 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dgvUsed = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBilling)).BeginInit();
@@ -55,14 +55,18 @@
             // 
             // dgvSchedule
             // 
+            this.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
             this.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSchedule.Location = new System.Drawing.Point(18, 55);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.RowTemplate.Height = 24;
+            this.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSchedule.Size = new System.Drawing.Size(789, 189);
             this.dgvSchedule.TabIndex = 0;
+            this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
             this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
             // 
             // groupBox3
@@ -173,6 +177,20 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_2);
             // 
+            // dgvUsed
+            // 
+            this.dgvUsed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvUsed.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUsed.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsed.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvUsed.Location = new System.Drawing.Point(21, 28);
+            this.dgvUsed.Name = "dgvUsed";
+            this.dgvUsed.RowTemplate.Height = 24;
+            this.dgvUsed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsed.Size = new System.Drawing.Size(536, 304);
+            this.dgvUsed.TabIndex = 19;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -185,6 +203,15 @@
             this.button4.Text = "Other Expenses";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(643, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Total Amount:";
             // 
             // button3
             // 
@@ -199,6 +226,15 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click_2);
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(768, 45);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(42, 17);
+            this.lblTotal.TabIndex = 21;
+            this.lblTotal.Text = "None";
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -212,6 +248,15 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(207, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(174, 17);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Billing Account Information";
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -224,44 +269,6 @@
             this.button1.Text = "Dialyzer Used";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(207, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(174, 17);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Billing Account Information";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(768, 45);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(42, 17);
-            this.lblTotal.TabIndex = 21;
-            this.lblTotal.Text = "None";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(643, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Total Amount:";
-            // 
-            // dgvUsed
-            // 
-            this.dgvUsed.BackgroundColor = System.Drawing.Color.White;
-            this.dgvUsed.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsed.Location = new System.Drawing.Point(21, 28);
-            this.dgvUsed.Name = "dgvUsed";
-            this.dgvUsed.RowTemplate.Height = 24;
-            this.dgvUsed.Size = new System.Drawing.Size(536, 304);
-            this.dgvUsed.TabIndex = 19;
             // 
             // frmPatientHistory
             // 

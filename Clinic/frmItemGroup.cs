@@ -36,17 +36,6 @@ namespace Clinic
             
         }
 
-        private void dgvItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvItem.Rows[i];
-                item_id = row.Cells[0].Value.ToString();
-                txtItem.Text = row.Cells[1].Value.ToString();
-            }
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             conn.Open();
@@ -128,20 +117,37 @@ namespace Clinic
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            conn.Open();
-            String sql = "INSERT INTO item_groups (group_id, item_id) VALUES ('" + group_id + "','" + item_id + "')";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Add Successful!");
-            dgvItemGroup.Refresh();
-            button1_Click_1(sender, e);
+            if (item_id != "" && group_id != "")
+            {
+                conn.Open();
+                String sql = "INSERT INTO item_groups (group_id, item_id) VALUES ('" + group_id + "','" + item_id + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Add Successful!");
+                dgvItemGroup.Refresh();
+                button1_Click_1(sender, e);
+            }
+            else {
+                MessageBox.Show("Please select item and group");
+            }
         }
         public string convertQuotes(string str)
         {
 
             return str.Replace("'", "''");
 
+        }
+
+        private void dgvItem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvItem.Rows[i];
+                item_id = row.Cells[0].Value.ToString();
+                txtItem.Text = row.Cells[1].Value.ToString();
+            }
         }
     }
 }

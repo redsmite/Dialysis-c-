@@ -48,22 +48,29 @@
             // 
             // dgvItemGroup
             // 
+            this.dgvItemGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvItemGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItemGroup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvItemGroup.Location = new System.Drawing.Point(449, 54);
             this.dgvItemGroup.Name = "dgvItemGroup";
             this.dgvItemGroup.RowTemplate.Height = 24;
+            this.dgvItemGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItemGroup.Size = new System.Drawing.Size(420, 367);
             this.dgvItemGroup.TabIndex = 0;
+            //this.dgvItemGroup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemGroup_CellContentClick);
             // 
             // dgvItem
             // 
+            this.dgvItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItem.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvItem.Location = new System.Drawing.Point(15, 54);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowTemplate.Height = 24;
+            this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItem.Size = new System.Drawing.Size(396, 367);
             this.dgvItem.TabIndex = 4;
-            this.dgvItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellContentClick);
+            this.dgvItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellClick);
             // 
             // label2
             // 

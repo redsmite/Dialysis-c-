@@ -32,9 +32,11 @@ namespace Clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String name = convertQuotes(txtName.Text);
             String desc = convertQuotes(txtDesc.Text);
+            if (name != "" && desc != "")
+            {
+            conn.Open();
             String sql = "INSERT INTO dialyzers (dialyzer_name, description) VALUES ('" + name + "','" + desc + "')";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -44,6 +46,9 @@ namespace Clinic
             frmDialyzer_Load(sender, e);
             txtName.Clear();
             txtDesc.Clear();
+            }else{
+                MessageBox.Show("Please enter name and description");
+            }
         }
 
         private void itemInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,23 +107,13 @@ namespace Clinic
             this.Hide();
         }
 
-        private void dgvDialyzer_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvDialyzer.Rows[i];
-                dialyzer_id = row.Cells[0].Value.ToString();
-                txtName.Text = row.Cells[1].Value.ToString();
-                txtDesc.Text = row.Cells[2].Value.ToString();
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String name = convertQuotes(txtName.Text);
             String desc = convertQuotes(txtDesc.Text);
+            if (name != "" && desc != "")
+            {
+            conn.Open();
             String sql = "UPDATE dialyzers SET dialyzer_name = '" + name + "', description = '" + desc + "' WHERE dialyzer_id = '" + dialyzer_id + "'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -128,6 +123,9 @@ namespace Clinic
             frmDialyzer_Load(sender, e);
             txtName.Clear();
             txtDesc.Clear();
+            }else{
+                MessageBox.Show("Please enter name and description!");
+            }
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -145,6 +143,18 @@ namespace Clinic
 
             return str.Replace("'", "''");
 
+        }
+
+        private void dgvDialyzer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvDialyzer.Rows[i];
+                dialyzer_id = row.Cells[0].Value.ToString();
+                txtName.Text = row.Cells[1].Value.ToString();
+                txtDesc.Text = row.Cells[2].Value.ToString();
+            }
         }
     }
 }

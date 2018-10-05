@@ -51,10 +51,13 @@
             // 
             // dgvSales
             // 
+            this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSales.Location = new System.Drawing.Point(6, 21);
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.RowTemplate.Height = 24;
+            this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSales.Size = new System.Drawing.Size(469, 410);
             this.dgvSales.TabIndex = 0;
             // 

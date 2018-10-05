@@ -50,9 +50,9 @@
             this.modeOfPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,6 +237,13 @@
             this.salesSummaryToolStripMenuItem.Text = "Sales Summary";
             this.salesSummaryToolStripMenuItem.Click += new System.EventHandler(this.salesSummaryToolStripMenuItem_Click);
             // 
+            // dailySalesToolStripMenuItem
+            // 
+            this.dailySalesToolStripMenuItem.Name = "dailySalesToolStripMenuItem";
+            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
+            this.dailySalesToolStripMenuItem.Text = "Daily Sales";
+            this.dailySalesToolStripMenuItem.Click += new System.EventHandler(this.dailySalesToolStripMenuItem_Click);
+            // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -251,13 +258,6 @@
             this.adminAccountToolStripMenuItem.Size = new System.Drawing.Size(276, 32);
             this.adminAccountToolStripMenuItem.Text = "Manage User Account";
             this.adminAccountToolStripMenuItem.Click += new System.EventHandler(this.adminAccountToolStripMenuItem_Click);
-            // 
-            // dailySalesToolStripMenuItem
-            // 
-            this.dailySalesToolStripMenuItem.Name = "dailySalesToolStripMenuItem";
-            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
-            this.dailySalesToolStripMenuItem.Text = "Daily Sales";
-            this.dailySalesToolStripMenuItem.Click += new System.EventHandler(this.dailySalesToolStripMenuItem_Click);
             // 
             // frmLanding
             // 

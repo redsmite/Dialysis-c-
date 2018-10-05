@@ -13,7 +13,7 @@ namespace Clinic
     public partial class frmBilling : Form
     {
         MySqlConnection conn = new MySqlConnection("server = localhost; uid = root; pwd=;database= db_clinic");
-        String bill_id = "";
+        public static String bill_id = "";
         String group_id = "";
         String item_id = "";
         public frmBilling()
@@ -47,13 +47,13 @@ namespace Clinic
             btnNew.Enabled = false;
             btnSelect.Enabled = true;
             dgvSchedule.Enabled = false;
-
+            btnSummary.Enabled = true;
         }
 
         private void frmBilling_Load(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id";
+            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no,is_attended FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id WHERE is_attended = 1 ORDER BY schedule_id DESC";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -92,17 +92,6 @@ namespace Clinic
             conn.Close();
         }
 
-        private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvSchedule.Rows[i];
-                lblSchedule.Text = row.Cells[0].Value.ToString();
-            }
-            btnNew.Enabled = true;
-        }
-
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             conn.Open();
@@ -126,85 +115,110 @@ namespace Clinic
             conn.Close();
         }
 
-        private void dgvItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = e.RowIndex;
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = dgvItem.Rows[i];
-                item_id = row.Cells[0].Value.ToString();
-                txtItem.Text = row.Cells[1].Value.ToString(); 
-                txtItemAmt.Text = row.Cells[3].Value.ToString();
-            }
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
-            conn.Open();
             String amount = txtItemAmt.Text;
             String quantity = txtQuantity.Text;
-            String sql = "INSERT INTO item_used (item_id, bill_id, amount, quantity,datecommit) VALUES ('" + item_id + "','" + bill_id + "','" + amount + "', '" + quantity + "',NOW())";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            String sql2 = "UPDATE billing SET total = total+("+amount+"*"+quantity+") WHERE bill_id = "+bill_id+"";
-            MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
-            cmd2.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Add Successful!");
-            dgvItem.Refresh();
-            txtSearch.Clear();
-            txtItem.Clear();
-            txtItemAmt.Clear();
-            txtQuantity.Clear();
+            String item = txtItem.Text;
+
+            if (txtItem.Text != "" && quantity != "")
+            {
+                conn.Open();
+                String sql = "INSERT INTO item_used (item_id, bill_id, amount, quantity,datecommit) VALUES ('" + item_id + "','" + bill_id + "','" + amount + "', '" + quantity + "',NOW())";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                String sql2 = "UPDATE billing SET total = total+(" + amount + "*" + quantity + ") WHERE bill_id = " + bill_id + "";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                cmd2.ExecuteNonQuery();
+                String sql3 = "INSERT INTO summary (summary, quantity, amount) VALUES ('"+item+"','"+quantity+"',"+quantity+"*"+amount+")";
+                MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+                cmd3.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Add Successful!");
+                dgvItem.Refresh();
+                txtSearch.Clear();
+                txtItem.Clear();
+                txtItemAmt.Clear();
+                txtQuantity.Clear();
+            }
+            else {
+                MessageBox.Show("Please select item and enter amount!");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String dialyzer = cboDialyzer.SelectedValue.ToString();
             String amount = txtDialyzerAmt.Text;
+            String details = cboDialyzer.Text;
+            if (amount != "")
+            {
+            conn.Open();
             String sql = "INSERT INTO dialyzer_used (dialyzer_id, amount, bill_id, datecommit) VALUES ('" + dialyzer + "','" + amount + "','" + bill_id + "',NOW())";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             String sql2 = "UPDATE billing SET total = total+" + amount + " WHERE bill_id = " + bill_id + "";
             MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
             cmd2.ExecuteNonQuery();
+            String sql3 = "INSERT INTO summary (summary, quantity, amount) VALUES ('" + details + "',1,"+ amount + ")";
+            MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+            cmd3.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Add Successful!");
             txtDialyzerAmt.Clear();
+            }else{
+                MessageBox.Show("Please enter amount!");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String lab = cboLab.SelectedValue.ToString();
             String amount = txtLabAmt.Text;
+            String details = cboLab.Text;
+            if (amount != "")
+            {
+            conn.Open();
             String sql = "INSERT INTO laboratory_used (lab_id, amount, bill_id,datecommit) VALUES ('" + lab+ "','" + amount + "','" + bill_id + "',NOW())";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             String sql2 = "UPDATE billing SET total = total+" + amount + " WHERE bill_id = " + bill_id + "";
             MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
             cmd2.ExecuteNonQuery();
+            String sql3 = "INSERT INTO summary (summary, quantity, amount) VALUES ('" + details + "',1," + amount + ")";
+            MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+            cmd3.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Add Successful!");
             txtLabAmt.Clear();
+            }else{
+                MessageBox.Show("Please enter amount!");
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String desc = convertQuotes(txtOther.Text);
             String amount = txtOtherAmt.Text;
+            if (desc != "" && amount != "")
+            {
+            conn.Open();
             String sql = "INSERT INTO other_expenses (description, amount, bill_id, datecommit) VALUES ('" + desc + "','" + amount + "','" + bill_id + "',NOW())";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             String sql2 = "UPDATE billing SET total = total+" + amount + " WHERE bill_id = " + bill_id + "";
             MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
             cmd2.ExecuteNonQuery();
+            String sql3 = "INSERT INTO summary (summary, quantity, amount) VALUES ('" + desc + "',1," + amount + ")";
+            MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+            cmd3.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Add Successful!");
             txtOther.Clear();
             txtOtherAmt.Clear();
+            }else{
+                MessageBox.Show("Please enter amount and description!");
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -216,6 +230,12 @@ namespace Clinic
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
             groupBox4.Enabled = false;
+            btnSummary.Enabled = false;
+            conn.Open();
+            String sql3 = "truncate summary";
+            MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+            cmd3.ExecuteNonQuery();
+            conn.Close();
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -277,6 +297,72 @@ namespace Clinic
 
             return str.Replace("'", "''");
 
+        }
+
+        private void dgvSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvSchedule.Rows[i];
+                lblSchedule.Text = row.Cells[0].Value.ToString();
+            }
+            btnNew.Enabled = true;
+        }
+
+        private void dgvItem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (e.RowIndex > -1)
+            {
+                DataGridViewRow row = dgvItem.Rows[i];
+                item_id = row.Cells[0].Value.ToString();
+                txtItem.Text = row.Cells[1].Value.ToString();
+                txtItemAmt.Text = row.Cells[3].Value.ToString();
+            }
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            conn.Open();
+            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id WHERE lastname like '%" + convertQuotes(txtSearchSched.Text) + "%' ORDER BY schedule_id DESC";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvSchedule.DataSource = dt;
+            conn.Close();
+        }
+
+        private void txtSearchItem_KeyUp(object sender, KeyEventArgs e)
+        {
+            conn.Open();
+            String sql = "SELECT item_id, name, brand, sell_price FROM item_info WHERE name LIKE '%" + convertQuotes(txtSearchItem.Text) + "%'";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvItem.DataSource = dt;
+            conn.Close();
+        }
+
+        private void txtQuantity_KeyUp(object sender, KeyEventArgs e)
+        {
+            double sub = 0;
+            double amount = 0;
+            double qty = 0;
+
+            if (txtQuantity.Text != "" && txtItemAmt.Text != "" && txtQuantity.Text != "")
+            {
+                amount = Convert.ToDouble(txtItemAmt.Text);
+                qty = Convert.ToDouble(txtQuantity.Text);
+                sub = amount * qty;
+                txtSubtotal.Text = Convert.ToString(sub);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmSummary frm = new frmSummary();
+            frm.Show();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace Clinic
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String name = convertQuotes(txtName.Text);
             String brand = convertQuotes(txtBrand.Text);
             String desc = convertQuotes(txtDesc.Text);
@@ -40,6 +39,8 @@ namespace Clinic
             String s_price = txtSPrice.Text;
             String o_price = txtOPrice.Text;
             String quantity = txtQuantity.Text;
+            if(name != "" && brand != "" && desc != "" && packaging != "" && s_price != "" && o_price != "" && quantity != ""){
+            conn.Open();
             String sql = "INSERT INTO item_info (name,brand,description,packaging,sell_price,original_price,quantity) VALUES ('" + name + "','" + brand + "','" + desc + "','" + packaging + "','" + s_price + "','" + o_price + "','" + quantity + "')";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -53,6 +54,9 @@ namespace Clinic
             txtSPrice.Clear();
             txtOPrice.Clear();
             txtQuantity.Clear();
+            }else{
+                MessageBox.Show("Please fill up all textboxes!");
+            }
         }
 
         private void dgvItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,7 +77,6 @@ namespace Clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
             String name = convertQuotes(txtName.Text);
             String brand = convertQuotes(txtBrand.Text);
             String desc = convertQuotes(txtDesc.Text);
@@ -81,19 +84,26 @@ namespace Clinic
             String s_price = txtSPrice.Text;
             String o_price = txtOPrice.Text;
             String quantity = txtQuantity.Text;
-            String sql = "UPDATE item_info SET name = '"+ name +"', brand = '"+ brand +"', description = '"+ desc +"', packaging = '"+ packaging +"', sell_price ='"+ s_price +"', original_price = '"+ o_price +"', quantity = '"+ quantity +"' WHERE item_id = '"+ item_id +"'";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Update Successful!");
-            dgvItem.Refresh();
-            Form1_Load(sender, e);
-            txtName.Clear();
-            txtBrand.Clear();
-            txtDesc.Clear();
-            txtSPrice.Clear();
-            txtOPrice.Clear();
-            txtQuantity.Clear();
+            if (name != "" && brand != "" && desc != "" && packaging != "" && s_price != "" && o_price != "" && quantity != "")
+            {
+                conn.Open();
+                String sql = "UPDATE item_info SET name = '" + name + "', brand = '" + brand + "', description = '" + desc + "', packaging = '" + packaging + "', sell_price ='" + s_price + "', original_price = '" + o_price + "', quantity = '" + quantity + "' WHERE item_id = '" + item_id + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Update Successful!");
+                dgvItem.Refresh();
+                Form1_Load(sender, e);
+                txtName.Clear();
+                txtBrand.Clear();
+                txtDesc.Clear();
+                txtSPrice.Clear();
+                txtOPrice.Clear();
+                txtQuantity.Clear();
+            }
+            else {
+                MessageBox.Show("Please fill up all the textboxes!");
+            }
         }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)

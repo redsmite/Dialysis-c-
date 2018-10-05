@@ -54,6 +54,12 @@ namespace Clinic
                     user_id = dr.GetString(0);
                     session_name = dr.GetString(1);
                 }
+                conn.Close();
+                conn.Open();
+                String sql3 = "truncate summary";
+                MySqlCommand cmd3 = new MySqlCommand(sql3, conn);
+                cmd3.ExecuteNonQuery();
+                conn.Close();
                 frmLanding frm = new frmLanding();
                 frm.Show();
                 this.Hide();

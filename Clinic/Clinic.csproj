@@ -31,6 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -130,6 +135,12 @@
     <Compile Include="frmPatientHistory.Designer.cs">
       <DependentUpon>frmPatientHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPatientSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatientSearch.Designer.cs">
+      <DependentUpon>frmPatientSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +164,12 @@
     </Compile>
     <Compile Include="frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSummary.Designer.cs">
+      <DependentUpon>frmSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="frmViewSchedule.cs">
       <SubType>Form</SubType>
@@ -201,6 +218,9 @@
     <EmbeddedResource Include="frmPatientHistory.resx">
       <DependentUpon>frmPatientHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPatientSearch.resx">
+      <DependentUpon>frmPatientSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPayment.resx">
       <DependentUpon>frmPayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +233,9 @@
     <EmbeddedResource Include="frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSummary.resx">
+      <DependentUpon>frmSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmViewSchedule.resx">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +243,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPatients.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPatients.cs</LastGenOutput>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -234,6 +261,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="rptPatients.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPatients.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

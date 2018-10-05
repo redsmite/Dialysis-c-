@@ -13,6 +13,7 @@ namespace Clinic
     public partial class frmSchedule : Form
     {
         MySqlConnection conn = new MySqlConnection("server = localhost; uid = root; pwd=;database= db_clinic");
+        public static String patient = "";
         public frmSchedule()
         {
             InitializeComponent();
@@ -21,23 +22,13 @@ namespace Clinic
         private void frmSchedule_Load(object sender, EventArgs e)
         {
             conn.Open();
-            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id";
+            String sql = "SELECT schedule_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name, date_schedule, time_start, time_end, session_no,is_attended FROM scheduling AS t1 LEFT JOIN patient AS t2 ON t1.patient_id = t2.patient_id";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgvSchedule.DataSource = dt;
             conn.Close();
             
-            String sql2 = "SELECT patient_id, CONCAT(lastname,', ',firstname,' ',middlename) AS name FROM patient ORDER BY lastname";
-            MySqlCommand cmd = new MySqlCommand(sql2, conn);
-            conn.Open();
-            MySqlDataReader dr = cmd.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(dr);
-            cboPatient.DataSource = table;
-            cboPatient.DisplayMember = "name";
-            cboPatient.ValueMember = "patient_id";
-            conn.Close();
         }
 
        
@@ -69,20 +60,38 @@ namespace Clinic
 
         private void rectangleShape1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            String patient = cboPatient.SelectedValue.ToString();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String patient = frmPatientSearch.patient_id;
             String schedule = dtpDate.Value.Date.ToString("yyyy-MM-dd");
             String time_start = timeStart.Text;
             String time_end = timeEnd.Text;
             String session_num = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-            String sql = "INSERT INTO scheduling (patient_id, date_schedule, time_start, time_end, session_no) VALUES ('" + patient + "','" + schedule + "','" + time_start + "','" + time_end + "','" + session_num + "')";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Add Successful!");
-            dgvSchedule.Refresh();
-            frmSchedule_Load(sender, e);
+            if (patient != "")
+            {
+                conn.Open();
+                String sql = "INSERT INTO scheduling (patient_id, date_schedule, time_start, time_end, session_no) VALUES ('" + patient + "','" + schedule + "','" + time_start + "','" + time_end + "','" + session_num + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Add Successful!");
+                dgvSchedule.Refresh();
+                frmSchedule_Load(sender, e);
+            }
+            else {
+                MessageBox.Show("Please select patient!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            patient = txtPatient.Text;
+            frmPatientSearch frm = new frmPatientSearch();
+            frm.Show();
         }
 
     }

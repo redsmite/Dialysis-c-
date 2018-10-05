@@ -39,12 +39,7 @@
             this.txtMiddle = new System.Windows.Forms.TextBox();
             this.txtFirst = new System.Windows.Forms.TextBox();
             this.txtLast = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.dgvPatient = new System.Windows.Forms.DataGridView();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.itemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,17 +52,17 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape5 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -181,73 +176,21 @@
             this.txtLast.Size = new System.Drawing.Size(223, 35);
             this.txtLast.TabIndex = 1;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.Info;
-            this.label16.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(854, 25);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 22);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "UPDATE";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.SystemColors.Info;
-            this.label14.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(917, 86);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 38);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "ADD";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
             // dgvPatient
             // 
+            this.dgvPatient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPatient.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPatient.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPatient.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPatient.Location = new System.Drawing.Point(3, 67);
             this.dgvPatient.Name = "dgvPatient";
             this.dgvPatient.RowTemplate.Height = 24;
+            this.dgvPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPatient.Size = new System.Drawing.Size(1123, 280);
             this.dgvPatient.TabIndex = 0;
+            this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
             this.dgvPatient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellContentClick);
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.BackColor = System.Drawing.SystemColors.Info;
-            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.rectangleShape3.Location = new System.Drawing.Point(837, 12);
-            this.rectangleShape3.Name = "rectangleShape3";
-            this.rectangleShape3.Size = new System.Drawing.Size(116, 50);
-            this.rectangleShape3.Click += new System.EventHandler(this.rectangleShape3_Click);
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.BackColor = System.Drawing.SystemColors.Info;
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.rectangleShape2.Location = new System.Drawing.Point(969, 12);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.Size = new System.Drawing.Size(116, 52);
-            this.rectangleShape2.Click += new System.EventHandler(this.rectangleShape2_Click);
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.SystemColors.Info;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.rectangleShape1.Location = new System.Drawing.Point(836, 71);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(247, 67);
-            this.rectangleShape1.Click += new System.EventHandler(this.rectangleShape1_Click);
             // 
             // itemToolStripMenuItem
             // 
@@ -316,9 +259,9 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.dgvPatient);
-            this.panel1.Controls.Add(this.shapeContainer1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 271);
             this.panel1.Name = "panel1";
@@ -337,75 +280,6 @@
             this.label6.Text = "PATIENT LIST";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape4});
-            this.shapeContainer1.Size = new System.Drawing.Size(1125, 353);
-            this.shapeContainer1.TabIndex = 2;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape4
-            // 
-            this.rectangleShape4.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.rectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape4.BorderColor = System.Drawing.SystemColors.HotTrack;
-            this.rectangleShape4.Location = new System.Drawing.Point(0, -1);
-            this.rectangleShape4.Name = "rectangleShape4";
-            this.rectangleShape4.Size = new System.Drawing.Size(1124, 66);
-            // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape5,
-            this.rectangleShape3,
-            this.rectangleShape2,
-            this.rectangleShape1});
-            this.shapeContainer2.Size = new System.Drawing.Size(1130, 618);
-            this.shapeContainer2.TabIndex = 12;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // rectangleShape5
-            // 
-            this.rectangleShape5.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.rectangleShape5.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape5.BorderColor = System.Drawing.Color.Blue;
-            this.rectangleShape5.Location = new System.Drawing.Point(12, -1);
-            this.rectangleShape5.Name = "rectangleShape5";
-            this.rectangleShape5.Size = new System.Drawing.Size(760, 51);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.SystemColors.Info;
-            this.label15.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(982, 25);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 22);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "CANCEL";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(23, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(291, 29);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "PATIENT INFORMATION";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
@@ -429,9 +303,69 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(136, 68);
             this.button2.TabIndex = 22;
-            this.button2.Text = "Docu";
+            this.button2.Text = "Files";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.Info;
+            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button3.Location = new System.Drawing.Point(837, 73);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(249, 70);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "ADD";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button4.Location = new System.Drawing.Point(837, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(117, 55);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "UPDATE";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button5.Location = new System.Drawing.Point(969, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(117, 55);
+            this.button5.TabIndex = 25;
+            this.button5.Text = "CLEAR";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(1, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(291, 29);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "PATIENT INFORMATION";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(12, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(762, 44);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
             // 
             // frmPatient
             // 
@@ -439,17 +373,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1130, 618);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.shapeContainer2);
             this.Name = "frmPatient";
             this.Text = "Patient";
             this.Load += new System.EventHandler(this.frmPatient_Load);
@@ -458,6 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,21 +422,15 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtSearch;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
-        private System.Windows.Forms.Label label14;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel1;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label6;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape4;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape5;
-        private System.Windows.Forms.Label label7;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
 
     }
 }
